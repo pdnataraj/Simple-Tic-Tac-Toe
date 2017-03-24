@@ -43,28 +43,33 @@ class Board:
         line2 = [(200, 100),(200,400)]
         line3 = [(0,200),(300,200)]
         line4 = [(0,300),(300,300)]
-        linex1 = [(0,100),(100,200)]
-        linex2 = [(100,100),(0,200)]
-
+        
         # Draw the lines on the board
         pygame.draw.lines(self.screen,Board.BLACK,False,line1,Board.THICKNESS)
         pygame.draw.lines(self.screen,Board.BLACK,False,line2,Board.THICKNESS)
         pygame.draw.lines(self.screen,Board.BLACK,False,line3,Board.THICKNESS)
         pygame.draw.lines(self.screen,Board.BLACK,False,line4,Board.THICKNESS)
 
-    def draw_on_tile(self,tile_num):
+    def draw_on_tile(self,tile_num,move):
         """"This method draws on the tile"""
         tile = self.tiles[tile_num-1]
-        tile_line1 = (tile[0],tile[2])
-        tile_line2 = (tile[1],tile[3])
-        pygame.draw.lines(self.screen,Board.BLACK,False,tile_line1, Board.THICKNESS)
-        pygame.draw.lines(self.screen,Board.BLACK,False,tile_line2, Board.THICKNESS)
+        tile_line1 = [tile[0],tile[3]]
+        tile_line2 = [tile[1],tile[2]] 
         
-        #elif(move == 'o' or move =='O'):
-            #tile_center = (int((tile_topRight[0] - tile_topLeft[0])/2), int((tile_topLeft[1] - tile_botLeft[1])/2))
-            #tile_radius = 100
-            #pygame.draw.circle(self.screen,Board.BLACK,tile_center, tile_radius, 1)
+        tile_topLeft = tile[0]
+        tile_topRight = tile[1]
+        tile_botLeft = tile[2]
+        tile_botRight = tile[3]
         
-        #else:
-            #print("Enter either x,X,o or O")
+        if(move == 'x' or move == 'X'):
+            pygame.draw.lines(self.screen,Board.BLACK,False,tile_line1, Board.THICKNESS)
+            pygame.draw.lines(self.screen,Board.BLACK,False,tile_line2, Board.THICKNESS)
+        
+        elif(move == 'o' or move =='O'):
+            tile_center = (tile_topLeft[0] + 50, tile_topLeft[1] + 50) 
+            tile_radius = 50
+            pygame.draw.circle(self.screen,Board.BLACK,tile_center, tile_radius, 1)
+        
+        else:
+            print("Enter either x,X,o or O")
              
