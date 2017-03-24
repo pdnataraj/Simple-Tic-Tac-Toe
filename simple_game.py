@@ -44,6 +44,7 @@ while not done:
     # --- Drawing code should go here
     screen.blit(textSurface,(0,10))
     game_board.drawBoard()
+    game_board.draw_on_tile(2)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

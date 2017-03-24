@@ -22,28 +22,23 @@ class Board:
     tile8 = [(100,300),(200,300),(100,400),(200,400)]
     tile9 = [(200,300),(300,300),(200,400),(400,400)]
     
-    # Create a list of all tiles
+    BLACK = (0,0,0)
+    THICKNESS = 2    
+    
+    # Create a tuple of all tiles
     tiles = (tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9)
     
     def __init__(self,screen):
         self.screen = screen
         print("Hello")
-
-    def define_tile(self,top-left,top-right,bottom-right,bottom-left):
-        topLeft = top-left
-        topRight = top-right
-        bottomLeft = bottom-left
-        bottomRight = bottom-right
-        center = ((topRight[0] - topLeft[0])/2, (topLeft[1] - bottomLeft[1])/2)
-        
+    
+   
     def drawBoard(self):
     # function draws board made up of 4 lines to screen
 
-    # Define characteristics of board such as line colour, thickness and line
+    # Define characteristics of board such as line colour, Board.THICKNESS and line
     # coordinates
 
-        BLACK = (0,0,0)
-        THICKNESS = 2
         line1 = [(100,100),(100,400)]
         line2 = [(200, 100),(200,400)]
         line3 = [(0,200),(300,200)]
@@ -52,9 +47,24 @@ class Board:
         linex2 = [(100,100),(0,200)]
 
         # Draw the lines on the board
-        pygame.draw.lines(self.screen,BLACK,False,line1,THICKNESS)
-        pygame.draw.lines(self.screen,BLACK,False,line2,THICKNESS)
-        pygame.draw.lines(self.screen,BLACK,False,line3,THICKNESS)
-        pygame.draw.lines(self.screen,BLACK,False,line4,THICKNESS)
-        pygame.draw.lines(self.screen,BLACK,False,linex1,THICKNESS)
-        pygame.draw.lines(self.screen,BLACK,False,linex2,THICKNESS)
+        pygame.draw.lines(self.screen,Board.BLACK,False,line1,Board.THICKNESS)
+        pygame.draw.lines(self.screen,Board.BLACK,False,line2,Board.THICKNESS)
+        pygame.draw.lines(self.screen,Board.BLACK,False,line3,Board.THICKNESS)
+        pygame.draw.lines(self.screen,Board.BLACK,False,line4,Board.THICKNESS)
+
+    def draw_on_tile(self,tile_num):
+        """"This method draws on the tile"""
+        tile = self.tiles[tile_num-1]
+        tile_line1 = (tile[0],tile[2])
+        tile_line2 = (tile[1],tile[3])
+        pygame.draw.lines(self.screen,Board.BLACK,False,tile_line1, Board.THICKNESS)
+        pygame.draw.lines(self.screen,Board.BLACK,False,tile_line2, Board.THICKNESS)
+        
+        #elif(move == 'o' or move =='O'):
+            #tile_center = (int((tile_topRight[0] - tile_topLeft[0])/2), int((tile_topLeft[1] - tile_botLeft[1])/2))
+            #tile_radius = 100
+            #pygame.draw.circle(self.screen,Board.BLACK,tile_center, tile_radius, 1)
+        
+        #else:
+            #print("Enter either x,X,o or O")
+             
