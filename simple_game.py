@@ -1,6 +1,6 @@
 import pygame
 import sys
-from draw_board import Board
+from board import Board
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 pygame.init()
